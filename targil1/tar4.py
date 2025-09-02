@@ -21,4 +21,5 @@ def twin_prime(n):
 def dict_prime(n):
     return dict(map(lambda p:(p,twin_prime(p)),filter(lambda p:prime(p),range(2,n+1))))
 #אם אין תאום זה ישים None
-print(dict_prime(11))
+
+
