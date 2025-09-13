@@ -1,1 +1,24 @@
+from functools import reduce
+import timeit
+#sec1
+y=lambda x:x/2+2
+l=list(range(0,10001))
+new_list=list(map(y,l))
 
+#sec2
+def func_sum():
+  return reduce(lambda acc,x:acc+x,new_list,0)
+#sec3
+##האימפרטיבי
+def imperative_sum():
+    s=0
+    for x in new_list:
+        s=x
+    return s
+t_reduce = min(timeit.Timer(func_sum).repeat(7, 1000))
+t_loop   = min(timeit.Timer(imperative_sum).repeat(7, 1000))
+print(f"reduce: {t_reduce:.6f}s")
+print(f"loop  : {t_loop:.6f}s")
+#sec4
+total=reduce(lambda acc,x:acc+y(x),l,0)
+print(f"total: {total}")
